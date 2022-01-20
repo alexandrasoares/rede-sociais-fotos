@@ -8,7 +8,14 @@
       type="text"
       [(ngModel)]="usuario"
       name="usuario"
+      #campoUsuario="ngModel"
+      required
     />
+
+    <app-mensagem
+      mensagem="Usuario Obrigatório"
+      *ngIf="campoUsuario.invalid"
+    ></app-mensagem>
   </div>
 
   <div class="form-group">
@@ -18,8 +25,15 @@
       type="password"
       [(ngModel)]="senha"
       name="senha"
+      #campoSenha="ngModel"
+      required
     />
   </div>
+
+  <app-mensagem
+    mensagem="Por favor digite a senha"
+    *ngIf="campoSenha.invalid"
+  ></app-mensagem>
 
   <button class="btn btn-primary btn-block" type="submit">Login</button>
 </form>

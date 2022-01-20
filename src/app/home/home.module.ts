@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +12,7 @@ import { LoginComponent } from './login/login.component';
     LoginComponent
   ],
   imports: [
+    SharedModule,
     HomeRoutingModule,
     FormsModule
   ],
