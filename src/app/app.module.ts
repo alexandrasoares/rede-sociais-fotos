@@ -1,3 +1,5 @@
+import { RodapeModule } from './shared/rodape/rodape.module';
+import { CabecalhoModule } from './shared/cabecalho/cabecalho.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CabecalhoModule,
+    RodapeModule
   ],
   exports: [
     AppRoutingModule,
