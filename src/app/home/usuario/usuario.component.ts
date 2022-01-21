@@ -6,6 +6,7 @@ import { minusculoValidator } from './minusculo.validator';
 import { Usuario } from './usuario-interface';
 import { UsuarioService } from './usuario.service';
 import { usuarioSenhaValidator } from './usuario-senha.validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -19,7 +20,8 @@ export class UsuarioComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
-    private getUserService: GetUsuarioService
+    private getUserService: GetUsuarioService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +45,16 @@ export class UsuarioComponent implements OnInit {
   }
 
   cadastrarUsuario() {
-    const novoUsuario = this.novoUsuarioForm.getRawValue() as Usuario;
+    if (this.novoUsuarioForm.valid) {
+      const novoUsuario = this.novoUsuarioForm.getRawValue() as Usuario;
+
+      this.usuarioService
+      .createUser(novoUsuario)
+      .subscribe(() => {
+        this.router.navigate(['']);
+      }, (error) => {
+        console.log(error);
+      })
+    }
   }
 }
